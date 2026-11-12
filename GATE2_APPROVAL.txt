@@ -1,0 +1,6 @@
+[APPROVED: yitin]
+[APPROVED: yitin] swagger
+[APPROVED: yitin] Legal paths
+[APPROVED: yitin] Spring Security and Jsoup
+[APPROVED: yitin] Docs and metrics
+[APPROVED: yitin] React client

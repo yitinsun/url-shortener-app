@@ -1,0 +1,15 @@
+{
+  "success_rate": {
+    "compiled_ok": 2,
+    "syntax_failures": 0
+  },
+  "retry_rollback_frequency": 1,
+  "mttr_ms": 124000,
+  "stage1_epoch_ms": null,
+  "stage7_epoch_ms": null,
+  "end_to_end_latency_ms": null,
+  "jacoco_line_ratio": 0.8271186440677966,
+  "jacoco_lines_covered": 244,
+  "jacoco_lines_missed": 51,
+  "updated_at": "2026-11-12T16:33:30Z"
+}
