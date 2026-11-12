@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  database:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: prod_password
+      MYSQL_DATABASE: shortener_prod
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data_volume:/var/lib/mysql
+      - ./backend/src/main/resources/db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pprod_password"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  application:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: database
+      DB_NAME: shortener_prod
+      DB_USER: root
+      DB_PASSWORD: prod_password
+      APP_BASE_URL: http://localhost:8080
+    depends_on:
+      database:
+        condition: service_healthy
+
+volumes:
+  mysql_data_volume:

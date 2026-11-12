@@ -1,0 +1,39 @@
+AGENTS.md
+GATE2_APPROVAL.txt
+SDLC_AUDIT_LOG.json
+SDLC_METRICS.json
+├── .cursor/
+│   ├── rules/
+│   │   ├── 00-lifecycle.mdc          # alwaysApply: Gate 2, stage order, 3-retry stop
+│   │   ├── 10-backend-java.mdc       # globs: backend/**
+│   │   └── 20-frontend-react.mdc     # globs: frontend/**/*.{ts,tsx}
+│   └── skills/
+│       └── url-shortener-sdlc/SKILL.md
+├── specs/
+│   ├── greenfield/                   # these files generate the app
+│   │   ├── PRD.md
+│   │   ├── SYSTEM_DESIGN.md
+│   │   ├── TECH_STACK.md             # Java 21, Boot 3.3.x; React is specs/frontend
+│   │   ├── TESTING_PLAN.md
+│   │   ├── INSTRUCTIONS.md
+│   │   └── ORCHESTRATION_MANIFEST.md
+│   ├── domain/
+│   │   └── glossary.md
+│   ├── contracts/
+│   │   └── openapi.yaml              # same paths and codes as PRD.md
+│   ├── brownfield/                   # one playbook per change, after Gate 4
+│   │   ├── 01-add-swagger.md
+│   │   ├── 02-legal-paths.md
+│   │   ├── 03-security-jsoup.md
+│   │   └── 04-refine.md
+│   ├── frontend/                     # React client; uses the OpenAPI contract
+│   │   ├── PRD.md                    # create, copy, open — POST /api/v1/shorten
+│   │   ├── DESIGN.md                 # paper/ink UI and four photographs
+│   │   ├── TECH_STACK.md             # Node 24, React, TypeScript, Vite
+│   │   └── TESTING_PLAN.md
+│   └── scenarios/                    # evaluation indexes only
+│       ├── 01-greenfield.md
+│       ├── 02-brownfield.md
+│       └── 03-ambiguous.md           # options, v1 pick, halt — no tasks
+├── backend/
+└── frontend/                         # app source later

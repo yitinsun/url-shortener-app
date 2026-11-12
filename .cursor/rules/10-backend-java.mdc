@@ -1,0 +1,23 @@
+---
+description: v1 URL shortener backend stack, schema, and test contract
+globs: backend/**
+alwaysApply: false
+---
+
+# Backend implementation contract
+
+Read `specs/greenfield/PRD.md`, `SYSTEM_DESIGN.md`, `TECH_STACK.md`, and `TESTING_PLAN.md` before changing matching files. The HTTP contract is `specs/contracts/openapi.yaml`.
+
+## Stack
+
+Java 21, Spring Boot 3.3.x parent, Maven 3.9+, JPA, MySQL Connector/J, Lombok (allow-list only), `starter-test`, H2 **test** scope, JaCoCo line coverage ≥ 0.80. Module root is `backend/`. springdoc 2.6.0, Spring Security, and jsoup 1.18.1 are present under signed playbooks. Security is permitAll with CSRF off. Do not add Redis, Flyway, Resilience4j, Safe Browsing clients, JWT, or OAuth.
+
+API DTOs are Java `record`s. Repositories are parameterized JPA only (no concatenated SQL). Secrets via `${PROPERTY:DEFAULT}` as in `TECH_STACK.md`.
+
+## Domain
+
+Package `com.yitinsun.urlshortener`. `url_mappings` DDL and seed `56800235` from `SYSTEM_DESIGN.md` (`backend/src/main/resources/db/schema.sql`, utf8mb4). Short codes are plain Base62(id). Idempotent create for an **active** exact `longUrl`. Default TTL 730 days. `GET /short/{shortCode}` returns 302, never 301. Missing or expired codes return **404 HTML**, not JSON and not a Whitelabel page.
+
+## Tests
+
+Mandatory classes and cases in `TESTING_PLAN.md`. Integration tests use `@ActiveProfiles("test")` (H2), not Mockito for HTTP. Gate 4 command: `mvn clean test` from `backend/`.
