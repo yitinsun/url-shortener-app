@@ -17,7 +17,7 @@ Implement only the current stage. Do not skip Gate 3 (schema + encoder + Spring 
 
 ## Lineage
 
-Append `SDLC_AUDIT_LOG.json` and update `SDLC_METRICS.json` per `INSTRUCTIONS.md`. Do not invent coverage or claim generated files in `specs/scenarios/01-greenfield.md`.
+Append `SDLC_AUDIT_LOG.json` and update `SDLC_METRICS.json` per `INSTRUCTIONS.md`. Do not invent coverage or claim generated files in `specs/scenarios/01-greenfield.md`. Do not write passwords, tokens, or other secrets into the audit log, metrics, or scenario Outputs. Name the property only.
 
 ## High impact — halt
 
