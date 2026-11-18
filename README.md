@@ -6,7 +6,7 @@ Gated Spring Boot service plus the React client in `frontend/`. Specs live in `s
 
 - JDK 21
 - Maven 3.9+
-- MySQL 8 on localhost for the dev profile. Database `shortener_dev`, user `root`. The lab default for `DB_PASSWORD` is `Tiger`.
+- MySQL 8 on localhost for the dev profile. Database `shortener_dev`, user `root`. Set `DB_PASSWORD` to the local MySQL password. The lab default is declared only in `specs/greenfield/TECH_STACK.md` and `application.yml`.
 - Docker is optional. `backend/Dockerfile` and `docker-compose.yml` are in the repo. On 2026-11-12, `docker compose up --build` built `url-shortener-app-application:latest` and then exited because host port 3306 is already used by local MySQL. The application container did not start.
 
 ## Tests

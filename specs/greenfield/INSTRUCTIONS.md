@@ -32,6 +32,8 @@ Allowed `stage` values: `REQUIREMENTS`, `ARCHITECTURE`, `IMPLEMENTATION`, `TESTI
 
 Preserve historical entries. Never overwrite the log on re-plan; only append. Do not write `"n/a"` for `upstream_dependency_hash` when a governing markdown file exists.
 
+**No secrets in lineage.** `action_taken` and `rationale` must not contain passwords, API keys, tokens, or connection strings that include credentials. The same ban applies to `SDLC_METRICS.json` and to Outputs in `specs/scenarios/`. Name the property only (`DB_PASSWORD`). Lab default values stay in `application.yml` as `${PROPERTY:DEFAULT}` and in `TECH_STACK.md`. Copying a lab default into the audit log is a violation. If an older entry contains a secret, redact the value in place and append a note that does not repeat it.
+
 ## 2. Reliability Metrics Tracking
 
 Write aggregated telemetry to `SDLC_METRICS.json` in the workspace root after every execution loop. Do not leave metrics as unnamed context variables. Do not invent JaCoCo ratios. Copy the line ratio from `backend/target/site/jacoco/jacoco.csv` after a real `mvn clean test`.

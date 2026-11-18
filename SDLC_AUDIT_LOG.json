@@ -32,11 +32,11 @@
         "rationale":  "Stage 6 files wire MySQL 8 and the prod profile. The image build was not run."
     },
     {
-        "action_taken":  "Set the lab DB_PASSWORD default to Tiger and created MySQL database shortener_dev. Rebuilt the jar. POST /api/v1/shorten returned 201.",
+        "action_taken":  "Set the lab DB_PASSWORD default and created MySQL database shortener_dev. Rebuilt the jar. POST /api/v1/shorten returned 201.",
         "timestamp":  "2026-11-12T15:38:39Z",
         "upstream_dependency_hash":  "C8F2D5FB66456719945BE83A724833708441A802A86031DCD4FCE588E7FA52AD",
         "stage":  "REPAIR",
-        "rationale":  "java -jar failed with Access denied for root using changeme, then Unknown database shortener_dev. The working url-shortener uses the local MySQL password Tiger.",
+        "rationale":  "java -jar failed with Access denied for root, then Unknown database shortener_dev. DB_PASSWORD was aligned with the local MySQL lab default. The value is not recorded in this log.",
         "upstream_dependency":  "specs/greenfield/TECH_STACK.md"
     },
     {
@@ -86,5 +86,13 @@
         "upstream_dependency": "specs/frontend/PRD.md",
         "upstream_dependency_hash": "65DDAE1605D8F12CA0BE09DC00F000D40FFF16F98BEC9DB0252A687DBF62E6AE",
         "rationale": "Step images were height 100% of the card, so the titles overflowed and the note painted over them."
+    },
+    {
+        "timestamp": "2026-11-18T18:11:32Z",
+        "stage": "COMPLIANCE",
+        "action_taken": "Redacted the database password from the 2026-11-12 REPAIR entry. Declared that lineage files name DB_PASSWORD and do not copy its value.",
+        "upstream_dependency": "specs/greenfield/INSTRUCTIONS.md",
+        "upstream_dependency_hash": "DA085088AA13AE6D6BB3D4BEB9DBC6A80D156A2AF5FE5C081232063EEC78D789",
+        "rationale": "The audit log is not a place for lab defaults. The value remains only in the config files named by TECH_STACK.md."
     }
 ]
