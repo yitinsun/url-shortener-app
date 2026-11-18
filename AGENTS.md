@@ -33,7 +33,7 @@ If the approval file is missing, refuse to implement and tell the operator to wr
   - **3C** Spring Boot module (`backend/pom.xml`, `application.yml`, JPA, controllers, exception handler)
 - Stage 4–5: `TESTING_PLAN.md`. From `backend/`, `mvn clean test`, JaCoCo line coverage ≥ 80%, no `@Disabled` / `@Ignore`. Max **3** repair retries, then Safe-Stop.
 - Stage 6–7: containers, then measured entries in `SDLC_METRICS.json` and the Outputs section of `specs/scenarios/01-greenfield.md`.
-- Log every mutation in `SDLC_AUDIT_LOG.json` (`INSTRUCTIONS.md`).
+- Log every mutation in `SDLC_AUDIT_LOG.json` (`INSTRUCTIONS.md`). Never write a password, token, or other secret into that log, `SDLC_METRICS.json`, or scenario Outputs. Name `DB_PASSWORD`; do not copy its value.
 
 ## High impact — stop and ask
 
